@@ -1,103 +1,86 @@
 <!doctype html>
 <html lang="cs">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sudoku – statistiky</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sudoku</title>
 
-  <!-- VZHLED -->
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="wrap page">
-    <!-- HORNÍ PANEL S OVLÁDÁNÍM -->
-    <div class="bar">
-      <label for="difficulty">Obtížnost:</label>
-      <select id="difficulty">
-        <option value="easy">Snadná</option>
-        <option value="medium">Střední</option>
-        <option value="hard">Těžká</option>
-        <option value="expert">Expert</option>
-      </select>
+    <link rel="stylesheet" href="stylesudoku.css" />
+    <script src="script.js" defer></script>
+  </head>
 
-      <button id="check">Zkontrolovat</button>
-      <button id="solve">Vyřešit</button>
-      <button id="new">Nová hra</button>
-      <button id="hint" class="btn-hint" title="Doplní jedno správné číslo (max 3×)">Nápověda (3)</button>
-      <button id="daily" class="btn-daily" title="Denní výzva na obtížnost Těžká">
-        Daily Challenge
-      </button>
-    </div>
+  <body>
+    <div class="wrap page">
+      <div class="bar">
+        <a class="back" href="menu.html">← Menu</a>
 
-    <!-- DVOU-SLOUPEČNÉ ROZLOŽENÍ: VLEVO DESKA, VPRAVO STATISTIKY -->
-    <div class="layout">
-      <main>
-        <div id="board" class="board" role="grid" aria-label="Sudoku 9×9"></div>
-      </main>
+        <label for="difficulty">Obtížnost:</label>
+        <select id="difficulty">
+          <option value="easy">Snadná</option>
+          <option value="medium">Střední</option>
+          <option value="hard">Těžká</option>
+          <option value="expert">Expert</option>
+        </select>
 
-      <aside class="stats" aria-label="Statistiky">
-        <div class="stat-card">
-          <div class="timer" id="timer">00:00</div>
-          <div class="muted" id="hintInfo">Nápovědy: 3 / 3</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-row">
-            <span>Odehráno her</span><strong id="gamesPlayed">0</strong>
-          </div>
-          <div class="stat-row">
-            <span>Vyřešeno celkem</span><strong id="gamesSolved">0</strong>
-          </div>
-          <div class="stat-row">
-            <span>Daily Challenge vyřešeno</span>
-          <strong id="dailySolved">0</strong>
-        </div>
+        <button id="check">Zkontrolovat</button>
+        <button id="solve">Vyřešit</button>
+        <button id="new">Nová hra</button>
+        <button id="hint" class="btn-hint" title="Doplní jedno správné číslo (max 3×)">Nápověda (3)</button>
+        <button id="daily" class="btn-daily" title="Denní výzva na obtížnost Těžká">Daily Challenge</button>
       </div>
 
-        <div class="stat-card">
-          <div class="stat-title">Podle obtížnosti</div>
-          <div class="stat-row">
-            <span>Snadná</span>
-            <span>
-              <strong id="solved-easy">0</strong> &nbsp;|&nbsp;
-              Best: <b id="best-easy">—</b>
-            </span>
-          </div>
-          <div class="stat-row">
-            <span>Střední</span>
-            <span>
-              <strong id="solved-medium">0</strong> &nbsp;|&nbsp;
-              Best: <b id="best-medium">—</b>
-            </span>
-          </div>
-          <div class="stat-row">
-            <span>Těžká</span>
-            <span>
-              <strong id="solved-hard">0</strong> &nbsp;|&nbsp;
-              Best: <b id="best-hard">—</b>
-            </span>
-          </div>
-          <div class="stat-row">
-            <span>Expert</span>
-            <span>
-              <strong id="solved-expert">0</strong> &nbsp;|&nbsp;
-              Best: <b id="best-expert">—</b>
-            </span>
-          </div>
-        </div> 
-      
-        </div>
+      <div class="layout">
+        <main>
+          <div id="board" class="board" role="grid" aria-label="Sudoku 9×9"></div>
+        </main>
 
-        
+        <aside class="stats" aria-label="Statistiky">
+          <div class="stat-card">
+            <div class="timer" id="timer">00:00</div>
+            <div class="muted" id="hintInfo">Nápovědy: 3 / 3</div>
+          </div>
 
-        <div class="stat-actions">
-          <button id="resetStats" class="ghost">Vymazat statistiky</button>
-        </div>
-      </aside>
+          <div class="stat-card">
+            <div class="stat-row">
+              <span>Odehráno her</span><strong id="gamesPlayed">0</strong>
+            </div>
+            <div class="stat-row">
+              <span>Vyřešeno celkem</span><strong id="gamesSolved">0</strong>
+            </div>
+            <div class="stat-row">
+              <span>Daily Challenge vyřešeno</span><strong id="dailySolved">0</strong>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-title">Podle obtížnosti</div>
+
+            <div class="stat-row">
+              <span>Snadná</span>
+              <span><strong id="solved-easy">0</strong> | Best: <b id="best-easy">—</b></span>
+            </div>
+
+            <div class="stat-row">
+              <span>Střední</span>
+              <span><strong id="solved-medium">0</strong> | Best: <b id="best-medium">—</b></span>
+            </div>
+
+            <div class="stat-row">
+              <span>Těžká</span>
+              <span><strong id="solved-hard">0</strong> | Best: <b id="best-hard">—</b></span>
+            </div>
+
+            <div class="stat-row">
+              <span>Expert</span>
+              <span><strong id="solved-expert">0</strong> | Best: <b id="best-expert">—</b></span>
+            </div>
+          </div>
+
+          <div class="stat-actions">
+            <button id="resetStats" class="ghost">Vymazat statistiky</button>
+          </div>
+        </aside>
+      </div>
     </div>
-  </div>
-
-  <!-- LOGIKA HRY -->
-  <script src="script.js"></script>
-</body>
+  </body>
 </html>

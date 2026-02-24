@@ -1,17 +1,41 @@
 <!doctype html>
 <html lang="cs">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Menu</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu</title>
 
-    <link rel="stylesheet" href="stylemenu.css" />
-    <script src="script.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="stylemenu.css" />
+  <script src="script.js" defer></script>
+</head>
 
-  <body>
-    <a href="sudoku.html"><img src="logo.png" alt=""></a>
-    <button id="logout" type="button" class="menu-btn">Odhlásit</button>
+<body>
+  <div class="page">
 
-  </body>
+    <!-- fialová: jméno a příjmení -->
+    <div class="user" id="userName">Jméno Příjmení</div>
+
+    <!-- červená: odhlásit -->
+    <button id="logout" type="button" class="logout">Odhlásit</button>
+
+    <!-- zelená: název -->
+    <div class="title">NÁZEV</div>
+
+    <!-- modrá: hry -->
+    <div class="games">
+      <a class="game-card" href="sudoku.html">
+        <img class="game-img" src="logo.png" alt="Sudoku">
+      </a>
+
+      <a class="game-card" href="hra2.html">
+        <span>Had-ještě není hotovo</span>
+      </a>
+
+      <a class="game-card" href="hra3.html">
+        <span>šachy-ještě není hotovo</span>
+      </a>
+    </div>
+
+  </div>
+</body>
 </html>
